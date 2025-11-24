@@ -279,8 +279,8 @@
     "users": [
     {
         "id": "1",
-        "name": "Admin",
-        "email": "admin@ipsc.com",
+        "name": "Jack",
+        "email": "jack@ipsc.com",
         "role": "admin",
         "avatar": "https://i.pravatar.cc/150?img=12"
     }

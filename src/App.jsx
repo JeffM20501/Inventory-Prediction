@@ -22,12 +22,12 @@ function App() {
     handlefetch('products', setProducts)
   }, [])
 
-  console.table(users)
+  // console.table(users)
   // console.table(products)
 
   return (
     <>
-      <Header/>
+      <Header users={users}/>
       <main className='main-wrapper'>
         <aside><NavBar/></aside>
         <Outlet context={{users:users, products:products}}/>
