@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* fonts */
+    --fontFamily: 'Inter', sans-serif;
+    --fontSize: 1.2rem;
+    --color: #1E293B;           
+    --mutedText: #64748B;       
+    /* Buttons & Hover */
+    --btnBg: #3B82F6;           
+    --btnText: #FFFFFF;          
+    --hover: #2563EB;           
+    /* Backgrounds */
+    --mainBg: #F1F5F9;          
+    --navBg: #FFFFFF;           
+    --tabsBg: #E2E8F0;          
+    --cardBg: #FFFFFF;          
+    /* Borders */
+    --borderColor: #CBD5E1;     
+    /* Status colors */
+    --success: #10B981;         
+    --warning: #FACC15;         
+    --error: #EF4444;          
+}
+
+body{
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
+    background-color: var(--mainBg);
+    transition: fill 0.3s ease-in-out;
+}
+
+body.darkmode {
+    --fontFamily: 'Inter', sans-serif;
+    --fontSize: 1.2rem;
+
+    --color: #E2E8F0; 
+    --hover: #06B6D4;
+    
+    --mainBg: #0F172A; 
+    --navBg: #1E293B; 
+    --tabsBg: #334155; 
+    --navBg:#334155;
+    
+    --cardBg: #1E2533;       
+    --borderColor: #2E3A4D;  
+    --mutedText: #94A3B8;    
+    --success: #10B981;
+    --warning: #FACC15;      
+    --error: #F43F5E;   
+}
+
+img{
+    max-inline-size: 100%;
+    display: block;
+}
+
+svg{
+    width: 20px;
+}
+
+button{
+    font-family: var(--fontFamily);
+    font-size: 1.4rem;
+    border: none;
+    font-size: 1.4rem;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all ease-in-out .4s;
+    margin-inline:10px ;
+}
