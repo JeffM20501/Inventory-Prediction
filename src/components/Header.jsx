@@ -9,7 +9,11 @@ function Header() {
             <img src={IPSC}/>
             <p>Inventory Prediction and Supply Chain- (IPSC)</p>
         </div>
-        <div></div>
+        <div>
+          <div className='header-user-profile'>
+            
+          </div>
+        </div>
     </header>
   )
 }

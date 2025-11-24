@@ -3,6 +3,7 @@
     align-items: center;
     padding-top: 20px;
     padding-bottom: 30px;
+    justify-content: space-between;
 }
 
 .main-header img{
@@ -13,4 +14,11 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.header-user-profile{
+    
 }
