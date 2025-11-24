@@ -1,15 +1,18 @@
 import './App.css'
-import Settings from './pages/SettingsPage/SettingsPage'
-import ProductPage from './pages/ProductPage/ProductPage'
-import Dashboard from './pages/DashBoard/Dashboard'
-import Alerts from './pages/Alerts/Alerts'
-import Analytics from './pages/Analytics/Analytics'
+import NavBar from './components/NavBar'
+import { Outlet} from 'react-router-dom'
+import './index.css'
+import Header from './components/Header'
+
 
 function App() {
-
   return (
     <>
-    
+      <Header/>
+      <main className='main-wrapper'>
+        <aside><NavBar/></aside>
+        <Outlet/>
+      </main>
     </>
   )
 }

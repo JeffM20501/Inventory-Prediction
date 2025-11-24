@@ -61,7 +61,7 @@ img{
 }
 
 svg{
-    width: 20px;
+    width: 30px;
 }
 
 button{
@@ -73,4 +73,25 @@ button{
     padding: 10px;
     transition: all ease-in-out .4s;
     margin-inline:10px ;
+}
+
+body, h1, h2, h3, h4, h5, h6,p, span, a, li, td, th, button, div {
+    color: var(--color);
+}
+
+body.darkmode h1,
+body.darkmode h4,
+body.darkmode h3 {
+    color: var(--color) !important;
+}
+
+body.darkmode svg {
+    fill: var(--color);
+    transition: fill 0.3s ease-in-out;
+}
+
+.main-wrapper{
+    display: flex;
+    gap: 20px;
+    padding-top: 20px;
 }
