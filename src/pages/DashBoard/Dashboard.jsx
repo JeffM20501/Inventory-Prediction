@@ -1,12 +1,31 @@
 import React from 'react'
 import { useOutletContext } from 'react-router-dom'
 import './Dashboard.css'
+import DashBoardInventory from './components/DashBoardInventory'
+import Selector from './components/Selector'
+import { useState } from 'react'
+
 function Dashboard() {
+  //states
+  const [filter, setFilter] = useState('')
+
+  // context
   const {users, products} = useOutletContext()
+  
+  //rendering
   const mappedUser = users.map(user=>{
     return(<h2>Hello <span>{user.name}👋. Welcome back</span></h2>)
   })
 
+  // variables
+  const filteredProducts=products.filter(pro=>{
+    if(filter==="") return true
+    return pro.category === filter
+  }) 
+
+  const nonDuplicateCategory = [... new Set(products.map(item=>item.category))]//avoid duplicates
+
+  // functions
   function calculateSummary(data){
       let TotalStock = 0
       let totalDemand = 0
@@ -25,6 +44,11 @@ function Dashboard() {
       return {TotalStock, totalDemand, totalSales, totalAlerts}
   }
   const {TotalStock, totalDemand, totalSales, totalAlerts} = calculateSummary(products)
+
+
+  function handleFilter(filter){
+    setFilter(filter)
+  }
 
   return (
     <main className='dashboard-main'>
@@ -71,8 +95,10 @@ function Dashboard() {
       <section className='dashboard-chart'>
         <h3>Stocks Chart</h3>
       </section>
-      <section className='dashboard-inventory-table'>
+      <section>
         <h3>Inventrory Table</h3>
+        <Selector nonDuplicateCategory={nonDuplicateCategory} onFilter={handleFilter}/>
+        <DashBoardInventory filteredProducts={filteredProducts}/>
       </section>
     </main>
   )
