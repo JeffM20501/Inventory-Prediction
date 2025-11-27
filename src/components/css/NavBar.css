@@ -7,7 +7,7 @@
     padding-block: 30px;
     padding-inline: 20px;
     max-inline-size: 300px;
-    height: 100vh;
+    height: 100vmax;
     box-shadow: 1px 1px 10px var(--hover);
 }
 

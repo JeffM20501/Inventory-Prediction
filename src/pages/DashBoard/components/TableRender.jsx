@@ -8,10 +8,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import './css/Table.css'
 function TableRender({rows}) {
-    console.log(rows)
     const headerStyles={
         letterSpacing:'2px',
-        fontSize:'1.4rem',
+        fontSize:'1.5rem',
         fontWeight:650,
         backgroundColor:'var(--tabsBg)'
     }
@@ -21,18 +20,21 @@ function TableRender({rows}) {
         const alertsStyle={
             backgroundColor:row.alerts && row.alerts.length > 0 ? 'var(--error)' : 'var(--success)',
             borderRadius:'15px',
-            color:"white",
+            color:"var(--color)",
             fontWeight:'bold'
+        }
+        const dataStyle={
+            color:"var(--color)"
         }
         return(
             <TableRow
                 key={row.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                <TableCell className='tbl-name' component="th" scope="row">{row.name}</TableCell>
-                <TableCell align="center">{row.sku}</TableCell>
-                <TableCell align="center">{row.stock}</TableCell>
-                <TableCell align="center">{row.demandForecast}</TableCell>
+                <TableCell sx={dataStyle} className='tbl-name' component="th" scope="row">{row.name}</TableCell>
+                <TableCell sx={dataStyle} align="center">{row.sku}</TableCell>
+                <TableCell sx={dataStyle} align="center">{row.stock}</TableCell>
+                <TableCell sx={dataStyle} align="center">{row.demandForecast}</TableCell>
                 <TableCell align="center" sx={alertsStyle}
                 >{row.alerts&&row.alerts.length>0?"Low Stock":"Green"}</TableCell>
             </TableRow>
