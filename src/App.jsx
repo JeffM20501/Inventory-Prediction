@@ -25,7 +25,7 @@ function App() {
     handlefetch('products', setProducts)
   }, [])
 
-  // console.table(users)
+  console.table(users)
   // console.table(products)
 
   return (
