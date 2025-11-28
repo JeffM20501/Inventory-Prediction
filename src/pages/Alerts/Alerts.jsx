@@ -11,7 +11,7 @@ function Alerts() {
   useEffect(() => {
     async function fetchAlerts() {
       try {
-        const res = await fetch('http://localhost:4000/products'); // <-- db.json endpoint
+        const res = await fetch('http://localhost:4000/products');
         const data = await res.json();
 
         const allAlerts = data.flatMap(product =>
@@ -34,22 +34,25 @@ function Alerts() {
   }, []);
 
   const acknowledgeAlert = (id) => {
-    setAlerts(prev => prev.map(a => a.id === id ? { ...a, status: 'read' } : a));
+    setAlerts(prev =>
+      prev.map(a => (a.id === id ? { ...a, status: 'read' } : a))
+    );
   };
 
-  const sortedAlerts = alerts.sort((a, b) => (a.status === 'read') - (b.status === 'read'));
+  const sortedAlerts = [...alerts].sort((a, b) => (a.status === 'read') - (b.status === 'read'));
 
   const filteredAlerts = sortedAlerts.filter(alert => {
     const matchFilter = filter === 'all' || alert.type === filter;
-    const matchSearch = alert.message.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        (alert.product_name && alert.product_name.toLowerCase().includes(searchTerm.toLowerCase()));
+    const matchSearch =
+      alert.message.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (alert.product_name && alert.product_name.toLowerCase().includes(searchTerm.toLowerCase()));
     return matchFilter && matchSearch;
   });
 
   const getIcon = (type) => {
-    if (type === 'critical') return <AiOutlineExclamationCircle color="#cc0000" />;
-    if (type === 'warning') return <AiOutlineWarning color="#ff9900" />;
-    if (type === 'info') return <AiOutlineInfoCircle color="#0077cc" />;
+    if (type === 'critical') return <AiOutlineExclamationCircle color="#cc0000" size={22} />;
+    if (type === 'warning') return <AiOutlineWarning color="#ff9900" size={22} />;
+    if (type === 'info') return <AiOutlineInfoCircle color="#0077cc" size={22} />;
     return null;
   };
 
@@ -83,8 +86,8 @@ function Alerts() {
         {filteredAlerts.length === 0 && <p>No alerts found.</p>}
         {filteredAlerts.map(alert => (
           <div
-            key={`${alert.id}-${alert.product_name}`}
-            className={`alert-card ${alert.type} ${alert.status === 'read' ? 'acknowledged' : ''}`}
+            key={alert.id} 
+            className={`alert-card ${alert.type} ${alert.status === 'read' ? 'acknowledged fade-out' : ''}`}
           >
             <div className="alert-top">
               <h3>
@@ -93,7 +96,7 @@ function Alerts() {
               </h3>
               {alert.product_name && <span className="product-name">({alert.product_name})</span>}
             </div>
-            <p className="time">{new Date(alert.created_at).toLocaleString()}</p>
+            <p className="time">{alert.created_at ? new Date(alert.created_at).toLocaleString() : ''}</p>
             {alert.status !== 'read' && (
               <div className="alert-actions">
                 <button onClick={() => acknowledgeAlert(alert.id)}>Acknowledge</button>

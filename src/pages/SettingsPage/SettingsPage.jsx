@@ -46,12 +46,10 @@ function SettingsPage() {
 
   const saveProfile = () => {
     alert("Profile saved!");
-    // Later: connect to API for saving
   };
 
   const saveSecurity = () => {
     alert("Security saved!");
-    // Later: connect to API for saving
   };
 
   return (
