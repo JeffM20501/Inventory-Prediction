@@ -19,9 +19,9 @@
 
 - ![dashboard](./src/assets/screenshot/dashboard.png)
 
-<!-- - ![Screenshot 2](./src/assets/screenshot/2.png)
+- ![ForeCast](./src/assets/screenshot/ForeCast.png)
 
-- ![Screenshot page 3](./src/assets/screenshot/3.png) -->
+<!-- - ![Screenshot page 3](./src/assets/screenshot/3.png) -->
 
 ## How to Setup
 
