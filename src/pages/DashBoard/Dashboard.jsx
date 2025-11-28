@@ -6,7 +6,6 @@ import Selector from './components/Selector'
 import { useState } from 'react'
 import DashForecast from './components/DashForecast'
 import Barchart from './components/Barchart'
-import SkeletomComp from './components/SkeletomComp'
 
 function Dashboard() {
   //states
@@ -54,7 +53,7 @@ function Dashboard() {
 
   return (
     <>
-    {false?<main className='dashboard-main'>
+    <main className='dashboard-main'>
       <div className='dashboard-head'>
         <h1>Invertory OverView</h1>
         {mappedUser}
@@ -69,7 +68,7 @@ function Dashboard() {
         <Selector nonDuplicateCategory={nonDuplicateCategory} onFilter={handleFilter}/>
         <DashBoardInventory filteredProducts={filteredProducts}/>
       </section>
-    </main>:<SkeletomComp/>}
+    </main>
     </>
   )
 }
