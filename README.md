@@ -19,7 +19,7 @@
 
 - ![dashboard](./src/assets/screenshot/dashboard.png)
 
-- ![ForeCast](./src/assets/screenshot/ForeCast.png)
+- ![ForeCast](./src/assets/screenshot/Forecast.png)
 
 <!-- - ![Screenshot page 3](./src/assets/screenshot/3.png) -->
 
