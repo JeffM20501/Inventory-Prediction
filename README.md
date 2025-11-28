@@ -13,6 +13,7 @@
 1. **Fetch & display product info** : Produt data and details are fetched and rendered dynamically
 
 2. **Loading skeleton**:While data loads, users see smooth Material UI skeleton placeholders.
+3. **Data visualization**: Charts are included to visualize data like stock amount
 
 ## Screenshots
 

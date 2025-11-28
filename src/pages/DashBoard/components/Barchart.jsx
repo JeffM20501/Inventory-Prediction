@@ -1,6 +1,7 @@
 import React from 'react'
 import { Bar, BarChart, ResponsiveContainer, CartesianGrid, Legend, XAxis, YAxis } from 'recharts'
 import { useMemo } from 'react'
+import './css/BarChart.css'
 
 function Barchart({products}) {
     const mappedChartData = useMemo(() => {
@@ -17,9 +18,12 @@ function Barchart({products}) {
     }, [products]) // Re-run only when products change
 
     console.log("mapped", mappedChartData)
+    if(!products||products.length===0){
+        return <h2 className='no-data-error'>No data available...</h2>
+    }
     
     return (
-        <ResponsiveContainer height={600} width='100%'>
+        <ResponsiveContainer height={720} width='100%'>
             <BarChart margin={{ top: 20, right: 30, left: 20, bottom: 70 }}  data={mappedChartData}>
                 <CartesianGrid strokeDasharray="5 5"/>
                 <XAxis dataKey="category" />

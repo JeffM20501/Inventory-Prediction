@@ -74,13 +74,3 @@
     width: 35px;
 }
 
-.dashboard-chart{
-    width:90%;
-    height: 700px;
-    margin: 20px 0;
-}
-
-.dashboard-chart div{
-    width: 100% !important;
-    height: 100% !important;
-}
