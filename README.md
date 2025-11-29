@@ -1,32 +1,139 @@
-# Inventory-Prediction
+# Inventory Prediction & Supply Chain (IPSC) 
  
 ## Table of Contents
 
-- [Inventory-Prediction](#inventory-prediction)
+- [Inventory Prediction \& Supply Chain (IPSC)](#inventory-prediction--supply-chain-ipsc)
   - [Table of Contents](#table-of-contents)
+  - [Project Overview](#project-overview)
   - [Features](#features)
+    - [Dashboard](#dashboard)
+    - [Products Management](#products-management)
+    - [Analytics \& Forecasting](#analytics--forecasting)
+    - [Alerts System](#alerts-system)
+    - [Settings \& Customization](#settings--customization)
   - [Screenshots](#screenshots)
+  - [Tech Stack](#tech-stack)
+  - [Key Components](#key-components)
+    - [DashBoard Features](#dashboard-features)
+    - [Data Management](#data-management)
+    - [User Experience](#user-experience)
   - [How to Setup](#how-to-setup)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Port Information](#port-information)
+
+
+## Project Overview
+
+- **IPSC** is a comprehensive inventory management dashboard built with React that provides insights into **stock levels, demand forecasting, and supply chain analytics**. 
+- The application helps businesses optimize inventory management through predictive analytics and visual data representation.
 
 ## Features
+
+### Dashboard
+
+- **Real-time Inventory Overview**: Total stock, predicted demand, low-stock alerts, and sales velocity
+
+- **Interactive Charts**: Bar charts showing stock distribution by category
+
+- **Category Filtering**: Filter inventory by product categories
+
+- **Inventory Table**: Detailed product information with risk status indicators
 
 1. **Fetch & display product info** : Produt data and details are fetched and rendered dynamically
 
 2. **Loading skeleton**:While data loads, users see smooth Material UI skeleton placeholders.
 3. **Data visualization**: Charts are included to visualize data like stock amount
 
+ ### Products Management
+- Complete product catalog with SKU tracking
+- Stock level monitoring with reorder alerts
+- Demand forecasting data
+- Supplier information management
+
+### Analytics & Forecasting
+- Sales performance tracking
+- Demand prediction analytics
+- Inventory trend analysis
+- Data visualization with interactive charts
+
+### Alerts System
+- Real-time low-stock notifications
+- Alert categorization (critical, warning, info)
+- Search and filter functionality
+- Alert acknowledgment system
+
+### Settings & Customization
+- User profile management
+- Account security settings
+- Notification preferences
+- Dark/Light theme toggle
+- Appearance customization
+
 ## Screenshots
+- **DashBoard**
+![dashboard](./src/assets/screenshot/dashboard.png)
 
-- ![dashboard](./src/assets/screenshot/dashboard.png)
+- **Forecast**
+![ForeCast](./src/assets/screenshot/Forecast.png)
 
-- ![ForeCast](./src/assets/screenshot/Forecast.png)
+- **Alerts**
+![alerts](./src/assets/screenshot/alerts.png)
 
-<!-- - ![Screenshot page 3](./src/assets/screenshot/3.png) -->
+- **Settings**
+![settings](./src/assets/screenshot/settings.png)
+
+## Tech Stack
+
+**Frontend Framework**
+ - **React** - Modern React with latest features
+ - **React Router DOM** - Client-side routing
+
+**UI Libraries & Styling**
+ - **Material-UI (MUI)** - Component library
+ - **Custom CSS** - Responsive design with CSS variables
+
+**Data Visualization**
+  - **Recharts**- Interactive charts and graphs
+
+**Development Tools**
+  - **Vite** - Fast build tool and dev server
+  - **JSON Server** - Mock REST API backend
+
+**Icons & Assets**
+  - **React Icons** - Comprehensive icon library
+
+  - **Custom SVG Icons**- Brand-specific icons
+
+## Key Components
+
+### DashBoard Features
+  - **Real-time Metrics**: Live calculation of inventory KPIs
+  - **Category-wise Analysis**: Stock distribution by product categories
+  - **Risk Assessment**: Automated low-stock detection and alerts
+
+### Data Management
+  - **RESTful API Integration**: JSON Server for data persistence
+  - **State Management**: React hooks for local state
+
+  - **Data Filtering**: Real-time search and category filters
+
+  - **Chart Optimization**: Memoized components for performance
+
+### User Experience
+  - **Loading States**: Skeleton components during data fetch
+  - **Error Handling**: Graceful error boundaries
+- **Theme Persistence**: Local storage for user preferences
+- **Accessibility**: Semantic HTML and keyboard navigation
+
 
 ## How to Setup
 
-- First **fork** this repo and then **clone** it to your machine
+### Prerequisites
+  - Node.js (v16 or higher)
+  - npm or pnpm
 
+### Installation
 - Ensure you have **Node.js** and the npm command line interface  installed on you machine if not:- [Use this resourece guide you on how to install Node.js and npm on you machine](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 - To see if you already have Node.js and npm installed and check the installed version, run the following commands:-
@@ -38,6 +145,13 @@
 ```bash
   npm -v
 ```
+
+- First **fork** this repo and then **clone** it to your machine
+  
+  ```bash
+    git clone <repository-url>
+  ```
+
 
 - **Navigate into the project**:
   
@@ -58,18 +172,33 @@
     ```bash
       pnpm install
     ```
+   
+  - Start Jthe development server in one terminal
+  
+    - **npm**:
+    
+    ```bash
+      npm  run dev
+    ```
 
-  **Start the development server**
+    - **pnpm**:
+    
+    ```bash
+      pnpm run dev
+    ```
+  
+  - Then, in another terminal, start the JSON Server
+  
   - **npm**:
-  
   ```bash
-    npm  run dev
+    npm run server
   ```
-
   - **pnpm**:
-  
   ```bash
-    pnpm run dev
+    pnpm run server
   ```
 
-- **Open the App in Browser**: '<http://localhost:5173/>' (Vite)
+### Port Information
+- **Development Server**: `http://localhost:5173` (Vite)
+- **API Server**: `http://localhost:4000` (JSON Server)
+
