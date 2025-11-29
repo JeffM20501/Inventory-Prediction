@@ -12,6 +12,7 @@ function SettingsPage() {
   // Profile fields
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [profilePic, setProfilePic] = useState('')
 
   // Security fields
   const [username, setUsername] = useState('');
@@ -26,6 +27,7 @@ function SettingsPage() {
       const user = users[0]; // using first user for demo
       setName(user.name || '');
       setEmail(user.email || '');
+      setProfilePic(user.avatar)
       setUsername(user.username || '');
       setPassword(user.password || '');
     }
@@ -33,15 +35,22 @@ function SettingsPage() {
 
   // Apply dark mode on mount
   useEffect(() => {
-    if (darkMode) document.body.classList.add("dark-mode");
-    else document.body.classList.remove("dark-mode");
+    const savedTheme = localStorage.getItem("darkMode");
+    if (savedTheme === "true") {
+      setDarkMode(true);
+      document.body.classList.add("darkmode");
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("darkMode", darkMode);
+    if (darkMode) document.body.classList.add("darkmode");
+    else document.body.classList.remove("darkmode");
   }, [darkMode]);
 
   const handleThemeToggle = () => {
-    const isDark = !darkMode;
-    setDarkMode(isDark);
-    if (isDark) document.body.classList.add("dark-mode");
-    else document.body.classList.remove("dark-mode");
+    setDarkMode(prev=>!prev);
+    if (darkMode) document.body.classList.add("darkmode");
+    else document.body.classList.remove("darkmode");
   };
 
   const saveProfile = () => {
@@ -75,7 +84,7 @@ function SettingsPage() {
         {activeTab === "profile" && (
           <div className="content">
             <h3>Profile Section</h3>
-            <div className="avatar"></div>
+            <img className="avatar" src={profilePic} alt='profile image'/>
 
             <label>Name</label>
             <input value={name} onChange={e => setName(e.target.value)} placeholder="Enter your name" />

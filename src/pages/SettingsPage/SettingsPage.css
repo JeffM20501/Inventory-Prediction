@@ -13,22 +13,22 @@
 
 .tab {
   padding: 12px 20px;
-  background-color: #fff;
+  background-color: var(--tabsBg);
   border: none;
   border-radius: 10px;
   font-size: 15px;
   cursor: pointer;
-  color: #333;
+  color: var(--color);
   box-shadow: 0 3px 10px rgba(0,0,0,0.08);
   transition: 0.2s;
 }
 
-.tab:hover { background-color: #e7ecff; }
+.tab:hover { background-color: var(--hover); }
 .tab.active { background-color: #0066ff; color: #fff; }
 
 /* Card */
 .settings-card {
-  background-color: #fff;
+  background-color: var(--tabsBg);
   padding: 25px;
   border-radius: 15px;
   max-width: 550px;
@@ -41,7 +41,7 @@
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background: #dbe3f3;
+  background: var(--color);
   margin: 10px auto;
 }
 
@@ -63,17 +63,17 @@
 /* Buttons */
 .save-btn {
   padding: 12px;
-  background-color: #0066ff;
+  background-color: var(--hover);
   border: none;
   border-radius: 10px;
-  color: #fff;
+  color: var(--color);
   cursor: pointer;
 }
 
-.save-btn:hover { background-color: #0052cc; }
+.save-btn:hover { background-color: var(--hover); }
 
 /* ---------------- GLOBAL DARK MODE OVERLAY ---------------- */
-body.dark-mode::before {
+/* body.dark-mode::before {
   content: "";
   position: fixed;
   top: 0;
@@ -84,4 +84,4 @@ body.dark-mode::before {
   pointer-events: none;
   z-index: 999;
   transition: background-color 0.3s ease;
-}
+} */
