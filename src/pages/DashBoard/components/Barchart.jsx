@@ -1,42 +1,72 @@
 import React from 'react'
-import { Bar, BarChart, ResponsiveContainer, CartesianGrid, Legend, XAxis, YAxis } from 'recharts'
-import { useMemo } from 'react'
-import './css/BarChart.css'
+import { Bar, BarChart, ResponsiveContainer, CartesianGrid, Legend, XAxis, YAxis, Tooltip } from 'recharts'
 
 function Barchart({products}) {
-    const mappedChartData = useMemo(() => {
-        const chartData = Object.entries(products.reduce((sum, pro)=>{
-            const cat = pro.category||"Uncategorized"
-            sum[cat]=(sum[cat]||0)+(pro.stock||0)
-            return sum
-        },{}))
-        
-        return chartData.map(([category, totalStock])=>({
-            category,
-            totalStock
-        }))
-    }, [products]) // Re-run only when products change
-
-    console.log("mapped", mappedChartData)
-    if(!products||products.length===0){
-        return <h2 className='no-data-error'>No data available...</h2>
+  // Group products by category and accumulate stock
+  const categoryData = products.reduce((acc, product) => {
+    const category = product.category || 'Uncategorized';
+    if (!acc[category]) {
+      acc[category] = { 
+        category: category, 
+        totalStock: 0,
+        productCount: 0
+      };
     }
-    
-    return (
-        <ResponsiveContainer height={720} width='100%'>
-            <BarChart margin={{ top: 20, right: 30, left: 20, bottom: 70 }}  data={mappedChartData}>
-                <CartesianGrid strokeDasharray="5 5"/>
-                <XAxis dataKey="category" />
-                <YAxis/>
-                <Legend/>
-                <Bar 
-                    fill='var(--color)'
-                    stroke='var(--hover)' 
-                    dataKey="totalStock" 
-                    name="Total Stock by Category"/>
-            </BarChart>
-        </ResponsiveContainer>
-    )
+    acc[category].totalStock += product.stock || 0;
+    acc[category].productCount += 1;
+    return acc;
+  }, {});
+
+  // Convert to array for Recharts
+  const chartData = Object.values(categoryData);
+
+  const CustomToolTipBar = ({active, payload, label})=>{
+    const styleTip = {
+        backgroundColor: 'var(--cardBg)',
+        color: 'var(--color)',
+        padding: '15px',
+        border: '1px solid var(--hover)',
+        borderRadius: '10px',
+        boxShadow: '0 4px 12px var(--color)',
+        fontSize: '1.09rem',
+        fontWeight: '550'
+    }
+    if(active && payload && payload.length){
+        return(
+            <div style={styleTip}>
+                <p style={{fontWeight:"600"}}>{`Category: ${label}`}</p>
+                <p style={{color:"var(--hover)"}}>{`Total Stock: ${payload[0].value}`}</p>
+            </div>
+        )
+    }
+    return null
+  }
+
+  return (
+    <ResponsiveContainer height={600} width='100%'>
+      <BarChart 
+        margin={{ top: 20, right: 30, left: 20, bottom: 70 }}  
+        data={chartData}
+      >
+        <CartesianGrid strokeDasharray="5 5" />
+        <XAxis 
+          dataKey="category" 
+          angle={0}
+          textAnchor="middle"
+          height={60}
+        />
+        <YAxis />
+        <Tooltip content={CustomToolTipBar}/>
+        <Legend />
+        <Bar 
+          fill='var(--hover)' 
+          stroke='var(--color)'
+          dataKey="totalStock"
+          name="Total Stock"
+        />
+      </BarChart>
+    </ResponsiveContainer>
+  )
 }
 
-export default React.memo(Barchart) // memorize the comp
+export default Barchart

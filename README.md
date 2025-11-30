@@ -200,5 +200,5 @@
 
 ### Port Information
 - **Development Server**: `http://localhost:5173` (Vite)
-- **API Server**: `http://localhost:4000` (JSON Server)
+- **JSON API Server**: `http://localhost:4000` (JSON Server)
 

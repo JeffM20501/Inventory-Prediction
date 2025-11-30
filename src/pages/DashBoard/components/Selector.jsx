@@ -19,16 +19,22 @@ function Selector({nonDuplicateCategory, onFilter}) {
             <MenuItem key={cat.id} value={cat}>{cat}</MenuItem>
         )
     })
+
+    const selectorBoxStyles = {
+        color:'var(--color)',
+        backgroungColor:'var(--navBg)'
+    }
   return (
     <>
-        <Box sx={{ minWidth: 200 }}>
-            <FormControl variant="standard" sx={{ m: 1, minWidth: 200 }} size="small">
-                <InputLabel id="demo-simple-select-label">Categories</InputLabel>
+        <Box sx={{minWidth: 200}}>
+            <FormControl variant="standard" sx={{m: 1, minWidth: 250}} size="small">
+                <InputLabel id="demo-simple-select-label" sx={{color:"var(--color)"}} >Categories</InputLabel>
                 <Select
                     labelId="demo-simple-select-standard-label"
                     id="demo-simple-select-standard"
                     value={category}
-                    label="Age"
+                    label="category"
+                    sx={selectorBoxStyles}
                     onChange={handleChange}
                 >
                     <MenuItem value="">None</MenuItem>
