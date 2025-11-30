@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import './Alerts.css';
 import { AiOutlineExclamationCircle, AiOutlineWarning, AiOutlineInfoCircle } from 'react-icons/ai';
 
@@ -8,13 +9,13 @@ function Alerts() {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
 
+  const {products} = useOutletContext()
+
   useEffect(() => {
     async function fetchAlerts() {
       try {
-        const res = await fetch('http://localhost:4000/products');
-        const data = await res.json();
 
-        const allAlerts = data.flatMap(product =>
+        const allAlerts = products.flatMap(product =>
           (product.alerts || []).map(alert => ({
             ...alert,
             product_name: product.name,
