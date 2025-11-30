@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-#Firebase
-Jeff-firebase.json
+
+#.env
+.env

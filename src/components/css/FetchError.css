@@ -1,0 +1,22 @@
+.fetch-error{
+    max-inline-size: 900px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.fetch-error h2, p {
+    margin-top: 15px;
+}
+
+.fetch-error img{
+    max-inline-size: 400px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.fetch-error p span{
+    font-style: italic;
+    font-weight: 550;
+    color: var(--error);
+}
+

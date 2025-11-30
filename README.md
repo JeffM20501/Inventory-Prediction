@@ -1,5 +1,5 @@
-# Inventory Prediction & Supply Chain (IPSC) 
- 
+# Inventory Prediction & Supply Chain (IPSC)
+
 ## Table of Contents
 
 - [Inventory Prediction \& Supply Chain (IPSC)](#inventory-prediction--supply-chain-ipsc)
@@ -21,11 +21,13 @@
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
     - [Port Information](#port-information)
-
+  - [Deployment](#deployment)
+    - [Frontend(Versel)](#frontendversel)
+    - [Backend(Render)](#backendrender)
 
 ## Project Overview
 
-- **IPSC** is a comprehensive inventory management dashboard built with React that provides insights into **stock levels, demand forecasting, and supply chain analytics**. 
+- **IPSC** is a comprehensive inventory management dashboard built with React that provides insights into **stock levels, demand forecasting, and supply chain analytics**.
 - The application helps businesses optimize inventory management through predictive analytics and visual data representation.
 
 ## Features
@@ -45,25 +47,29 @@
 2. **Loading skeleton**:While data loads, users see smooth Material UI skeleton placeholders.
 3. **Data visualization**: Charts are included to visualize data like stock amount
 
- ### Products Management
+### Products Management
+
 - Complete product catalog with SKU tracking
 - Stock level monitoring with reorder alerts
 - Demand forecasting data
 - Supplier information management
 
 ### Analytics & Forecasting
+
 - Sales performance tracking
 - Demand prediction analytics
 - Inventory trend analysis
 - Data visualization with interactive charts
 
 ### Alerts System
+
 - Real-time low-stock notifications
 - Alert categorization (critical, warning, info)
 - Search and filter functionality
 - Alert acknowledgment system
 
 ### Settings & Customization
+
 - User profile management
 - Account security settings
 - Notification preferences
@@ -71,6 +77,7 @@
 - Appearance customization
 
 ## Screenshots
+
 - **DashBoard**
 ![dashboard](./src/assets/screenshot/dashboard.png)
 
@@ -86,54 +93,68 @@
 ## Tech Stack
 
 **Frontend Framework**
- - **React** - Modern React with latest features
- - **React Router DOM** - Client-side routing
+
+- **React** - Modern React with latest features
+- **React Router DOM** - Client-side routing
 
 **UI Libraries & Styling**
- - **Material-UI (MUI)** - Component library
- - **Custom CSS** - Responsive design with CSS variables
+
+- **Material-UI (MUI)** - Component library
+- **Custom CSS** - Responsive design with CSS variables
 
 **Data Visualization**
-  - **Recharts**- Interactive charts and graphs
+
+- **Recharts**- Interactive charts and graphs
 
 **Development Tools**
-  - **Vite** - Fast build tool and dev server
-  - **JSON Server** - Mock REST API backend
+
+- **Vite** - Fast build tool and dev server
+- **JSON Server** - Mock REST API backend
 
 **Icons & Assets**
-  - **React Icons** - Comprehensive icon library
 
-  - **Custom SVG Icons**- Brand-specific icons
+- **React Icons** - Comprehensive icon library
+  
+- **Custom SVG Icons**- Brand-specific icons
+
+**Deployment**
+
+- **Vercel** - Frontend hosting
+- **Render** - Backend API hosting
 
 ## Key Components
 
 ### DashBoard Features
-  - **Real-time Metrics**: Live calculation of inventory KPIs
-  - **Category-wise Analysis**: Stock distribution by product categories
-  - **Risk Assessment**: Automated low-stock detection and alerts
+
+- **Real-time Metrics**: Live calculation of inventory KPIs
+- **Category-wise Analysis**: Stock distribution by product categories
+- **Risk Assessment**: Automated low-stock detection and alerts
 
 ### Data Management
-  - **RESTful API Integration**: JSON Server for data persistence
-  - **State Management**: React hooks for local state
 
-  - **Data Filtering**: Real-time search and category filters
+- **RESTful API Integration**: JSON Server for data persistence
+- **State Management**: React hooks for local state
 
-  - **Chart Optimization**: Memoized components for performance
+- **Data Filtering**: Real-time search and category filters
+
+- **Chart Optimization**: Memoized components for performance
 
 ### User Experience
-  - **Loading States**: Skeleton components during data fetch
-  - **Error Handling**: Graceful error boundaries
+
+- **Loading States**: Skeleton components during data fetch
+- **Error Handling**: Graceful error boundaries
 - **Theme Persistence**: Local storage for user preferences
 - **Accessibility**: Semantic HTML and keyboard navigation
-
 
 ## How to Setup
 
 ### Prerequisites
-  - Node.js (v16 or higher)
-  - npm or pnpm
+
+- Node.js (v16 or higher)
+- npm or pnpm
 
 ### Installation
+
 - Ensure you have **Node.js** and the npm command line interface  installed on you machine if not:- [Use this resourece guide you on how to install Node.js and npm on you machine](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 - To see if you already have Node.js and npm installed and check the installed version, run the following commands:-
@@ -151,7 +172,6 @@
   ```bash
     git clone <repository-url>
   ```
-
 
 - **Navigate into the project**:
   
@@ -172,17 +192,17 @@
     ```bash
       pnpm install
     ```
-   
+
   - Start Jthe development server in one terminal
   
     - **npm**:
-    
+
     ```bash
       npm  run dev
     ```
 
     - **pnpm**:
-    
+
     ```bash
       pnpm run dev
     ```
@@ -190,15 +210,58 @@
   - Then, in another terminal, start the JSON Server
   
   - **npm**:
+  
   ```bash
     npm run server
   ```
+
   - **pnpm**:
+  
   ```bash
     pnpm run server
   ```
 
 ### Port Information
+
 - **Development Server**: `http://localhost:5173` (Vite)
 - **JSON API Server**: `http://localhost:4000` (JSON Server)
 
+## Deployment
+
+### Frontend(Versel)
+
+**1.Build the project**
+
+```bash
+  npm run build
+```
+
+**2.Deploy to Vercel**
+
+- Push your code to GitHub
+
+- Connect your GitHub repo to Vercel
+
+- Add environment variables in Vercel dashboard
+
+- Deploy automatically
+  
+### Backend(Render)
+
+**1.Prepare your Backend**
+
+- Ensure you have a server.js or similar entry point
+
+- Include db.json in your repository
+
+**2.Deploy to Render**:
+
+- Create a new Web Service on Render
+
+- Connect your GitHub repository
+
+- Set build command: npm install
+
+- Set start command: npm run server
+
+- Add environment variables if needed

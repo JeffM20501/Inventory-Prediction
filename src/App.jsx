@@ -3,29 +3,49 @@ import NavBar from './components/NavBar'
 import { Outlet} from 'react-router-dom'
 import './index.css'
 import Header from './components/Header'
-import { baseUrl } from './api'
 import {useState, useEffect} from 'react'
 import SkeletomComp from './components/SkeletomComp'
+import FetchError from './components/FetchError'
 
 function App() {
   const [products, setProducts] = useState([])
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
+
+  const APIBaseurl = import.meta.env.VITE_API_BASE_URL
+
+  console.log(APIBaseurl)
+  console.log(import.meta.env)
 
   useEffect(()=>{
     async function handlefetch(url, setterFunc){
       try{
-        const r  = await fetch(`${baseUrl}/${url}`)
-        const data = await r.json()
-        setterFunc(data)
-        setLoading(true)
-      }catch(error){console.error(error)}
-    }
-    handlefetch('users', setUsers)
-    handlefetch('products', setProducts)
-  }, [])
+        const r  = await fetch(`${APIBaseurl}/${url}`)
 
-  console.table(users)
+        if(!r.ok){
+          throw new Error(`Error status: ${r.status}`)
+        }
+        const data = await r.json()
+        console.log(`Data received: ${url}`, data)
+        setterFunc(data)
+      }catch(error){
+        console.error(error)
+        setError(error.message)
+      }
+    }
+
+    // when all promise are resolved
+    Promise.all([
+      handlefetch('users', setUsers),
+      handlefetch('products', setProducts)
+    ])
+      .then(()=>{setLoading(true)})
+      .catch(()=>{setLoading(true)})
+
+  }, [APIBaseurl])
+
+  // console.table(users)
   // console.table(products)
 
   return (
@@ -34,7 +54,10 @@ function App() {
       <Header users={users}/>
       <section className='main-wrapper'>
         <aside><NavBar/></aside>
-        <Outlet context={{users:users, products:products}}/>
+        { error
+          ?<FetchError error={error}/>
+          :<Outlet context={{users:users, products:products}}/>
+        }
       </section>
     </main>:<SkeletomComp/>}
     </>
