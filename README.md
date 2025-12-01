@@ -24,6 +24,11 @@
   - [Deployment](#deployment)
     - [Frontend(Versel)](#frontendversel)
     - [Backend(Render)](#backendrender)
+  - [API Interactions](#api-interactions)
+    - [RESTful Endpointds](#restful-endpointds)
+    - [Form Implementations](#form-implementations)
+  - [Enviroment Variables](#enviroment-variables)
+  - [Security \& Best Practices](#security--best-practices)
   - [Links](#links)
 
 ## Project Overview
@@ -254,9 +259,9 @@
 
 **1.Prepare your Backend**
 
-- Ensure you have a server.js or similar entry point
+- Ensure you have a `server.js` or similar entry point
 
-- Include db.json in your repository
+- Include `db.json` in your repository
 
 **2.Deploy to Render**:
 
@@ -264,11 +269,71 @@
 
 - Connect your GitHub repository
 
-- Set build command: npm install
+- Set build command: `npm install`
 
-- Set start command: npm run server
+- Set start command: `npm run server`
 
 - Add environment variables if needed
+  
+## API Interactions
+
+### RESTful Endpointds
+
+- **GET** `/products` - Fetch all products
+
+- **POST** `/products` - Add new product (ProductPage)
+
+- **GET** `/users` - Fetch all users
+
+- **PATCH** `/users/:id` - Update user profile (SettingsPage)
+
+### Form Implementations
+
+1.**Product Creation Form** (`ProductPage.jsx`)
+
+- Controlled form with validation
+
+- POST request to JSON Server
+
+- Immediate state update after submission
+
+- Profile Update Form (`SettingsPage.jsx`)
+
+- Controlled form pre-filled with user data
+
+- PATCH request to update user info
+
+- Real-time UI update after changes
+
+
+## Enviroment Variables
+
+Create a `.env` file in the root directory
+
+```env
+  VITE_API_URL=https://your-url-render-app.onrender.com
+```
+
+Update your API calls to use the enviroment variables
+
+```jsx
+  const API_BASE_URL = import.meta.env.VITE_API_URL
+  fetch(`${API_BASE_URL}/products`)
+```
+
+
+
+## Security & Best Practices
+
+- Environment variables for API URLs
+
+- Sensitive files excluded via .gitignore
+
+- Proper error handling in fetch requests
+
+- LocalStorage for theme persistence
+
+
 
 ## Links
 
