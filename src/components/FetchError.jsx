@@ -8,6 +8,7 @@ function FetchError({error}) {
         <h2>Connection Error</h2>
         <p>Could not Connect To the server <span>{error}</span></p>
         <p>Reload Page to see if it can resolve the issue!</p>
+        <p>Or you can also try this link: <a href='https://inventory-prediction.netlify.app/'>BackUp Link</a></p>
     </div>
   )
 }

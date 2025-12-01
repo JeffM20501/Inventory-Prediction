@@ -6,6 +6,11 @@
     font-family: 'Poppins', var(--fontFamily), sans-serif;
 }
 
+.dashboard-head h2 span{
+    color: var(--btnBg);
+    font-style: italic;
+}
+
 
 .dashboard-forecast-cards{
     margin-block: 50px;
