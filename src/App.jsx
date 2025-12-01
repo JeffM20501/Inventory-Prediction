@@ -15,8 +15,8 @@ function App() {
 
   const APIBaseurl = import.meta.env.VITE_API_BASE_URL
 
-  console.log(APIBaseurl)
-  console.log(import.meta.env)
+  // console.log(APIBaseurl)
+  // console.log(import.meta.env)
 
   useEffect(()=>{
     async function handlefetch(url, setterFunc){
@@ -27,10 +27,10 @@ function App() {
           throw new Error(`Error status: ${r.status}`)
         }
         const data = await r.json()
-        console.log(`Data received: ${url}`, data)
+        // console.log(`Data received: ${url}`, data)
         setterFunc(data)
       }catch(error){
-        console.error(error)
+        // console.error(error)
         setError(error.message)
       }
     }
@@ -47,6 +47,16 @@ function App() {
 
   // console.table(users)
   // console.table(products)
+
+  function handleProfileEdit(e, formObj){
+    const configObj={
+      method:'PATCH',
+      headers:{
+        "Content-Type":'application/json'
+      },
+      body:JSON.stringify(formObj)
+    }
+  }
 
   return (
     <>

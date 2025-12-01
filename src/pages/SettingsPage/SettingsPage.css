@@ -45,6 +45,12 @@
   margin: 10px auto;
 }
 
+.profile-form input{
+  display: block;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
 /* Inputs */
 .settings-card input {
   padding: 12px;

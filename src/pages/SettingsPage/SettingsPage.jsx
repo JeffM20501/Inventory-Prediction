@@ -12,6 +12,10 @@ function SettingsPage() {
   // Profile fields
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [formObj, setFormObj] = useState({
+    name:"",
+    email:""
+  })
   const [profilePic, setProfilePic] = useState('')
 
   // Security fields
@@ -61,6 +65,13 @@ function SettingsPage() {
     alert("Security saved!");
   };
 
+
+  function handleChange(e){
+    const {name, value} = e.target
+    setFormObj(prev=>({...prev, [name]:value}))
+    console.log(formObj)
+  }
+
   return (
     <div className="settings-page">
       {/* Tabs */}
@@ -86,13 +97,15 @@ function SettingsPage() {
             <h3>Profile Section</h3>
             <img className="avatar" src={profilePic} alt='profile image'/>
 
-            <label>Name</label>
-            <input value={name} onChange={e => setName(e.target.value)} placeholder="Enter your name" />
+            <form className='profile-form'>
+              <label>Name</label>
+              <input name='name' value={formObj.name} onChange={handleChange} placeholder="Enter your name" />
 
-            <label>Email</label>
-            <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter your email" />
+              <label>Email</label>
+              <input name='email' value={formObj.email} onChange={handleChange} placeholder="Enter your email" />
 
-            <button className="save-btn" onClick={saveProfile}>Save Profile</button>
+              <button className="save-btn" onClick={saveProfile}>Save Profile</button>
+            </form>
           </div>
         )}
 
