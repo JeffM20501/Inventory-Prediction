@@ -5,8 +5,9 @@
 }
 
 .fetch-error h2{
-    letter-spacing: 3px;
-    font-size: 1.5rem;
+    letter-spacing: 4px;
+    font-size: 2.5rem;
+    color: var(--error);
 }
 
 .fetch-error h2, p {
@@ -22,6 +23,19 @@
 .fetch-error p span{
     font-style: italic;
     font-weight: 550;
+    font-size: 1.5rem;
     color: var(--error);
+}
+
+.fetch-error p a{
+    font-weight: 550;
+    text-decoration: none;
+    color: var(--hover);
+    font-size: 1.5rem;
+    transition: .3s all ease-in;
+}
+
+.fetch-error p a:hover{
+    color: var(--success);
 }
 

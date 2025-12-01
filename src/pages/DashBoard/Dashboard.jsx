@@ -16,7 +16,7 @@ function Dashboard() {
   
   //rendering
   const mappedUser = users.map(user=>{
-    return(<h2>Hello <span>{user.name}👋. Welcome back</span></h2>)
+    return(<h2>Hello <span>{user.name}</span>👋. Welcome back!!</h2>)
   })
 
   // variables
