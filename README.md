@@ -24,6 +24,7 @@
   - [Deployment](#deployment)
     - [Frontend(Versel)](#frontendversel)
     - [Backend(Render)](#backendrender)
+  - [Links](#links)
 
 ## Project Overview
 
@@ -265,3 +266,7 @@
 - Set start command: npm run server
 
 - Add environment variables if needed
+
+## Links
+
+- **Click link to go to the website** [Live Site Link](https://inventory-prediction-peach.vercel.app/)
