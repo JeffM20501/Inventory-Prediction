@@ -12,6 +12,7 @@ function App() {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const [sending, setSending] = useState(false)
 
   // If env variable is missing, default to localhost:8000
 const APIBaseurl = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000"
@@ -20,6 +21,7 @@ const APIBaseurl = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000"
   // console.log(import.meta.env)
 
   useEffect(()=>{
+
     async function handlefetch(url, setterFunc){
       try{
         const r  = await fetch(`${APIBaseurl}/${url}`)
@@ -49,13 +51,28 @@ const APIBaseurl = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000"
   // console.table(users)
   // console.table(products)
 
-  function handleProfileEdit(e, formObj){
+  async function handleProfileEdit(e, formObj){
+    e.preventDefault()
+    setSending(prev=>!prev)
     const configObj={
       method:'PATCH',
       headers:{
         "Content-Type":'application/json'
       },
       body:JSON.stringify(formObj)
+    }
+    try{
+      const r = await fetch(`${APIBaseurl}/users/${encodeURIComponent(formObj.id)}`, configObj)
+      if(!r.ok){
+          throw new Error(`Error status: ${r.status}`)
+        }
+      const updatedUserDta = await r.json()
+      setUsers(prev=>prev.map(user=>user.id===updatedUserDta.id?updatedUserDta:user))
+      setSending(prev=>!prev)
+      console.log("Success", updatedUserDta)
+    }catch(error){
+      console.log(error)
+      setError(error.message)
     }
   }
 
@@ -67,7 +84,12 @@ const APIBaseurl = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000"
         <aside><NavBar/></aside>
         { error
           ?<FetchError error={error}/>
-          :<Outlet context={{users:users, products:products}}/>
+          :<Outlet context={{
+            users:users, 
+            products:products, 
+            onProfileEdit:handleProfileEdit,
+            sending:sending
+          }}/>
         }
       </section>
     </main>:<SkeletomComp/>}

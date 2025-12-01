@@ -82,8 +82,11 @@
 - **DashBoard**
 ![dashboard](./src/assets/screenshot/dashboard.png)
 
-- **Forecast**
-![ForeCast](./src/assets/screenshot/Forecast.png)
+- **Product Page**
+![product-page](./src/assets/screenshot/productPage.png)
+
+- **Analytics**
+![Analytics](./src/assets/screenshot/Analytics.png)
 
 - **Alerts**
 ![alerts](./src/assets/screenshot/alerts.png)

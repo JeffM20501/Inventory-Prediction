@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import './SettingsPage.css';
+import LoadingCircle from '../../components/LoadingCircle';
 
 function SettingsPage() {
   // Get users from Outlet context
-  const { users } = useOutletContext();
+  const { users, onProfileEdit, sending } = useOutletContext();
 
   // Active tab
   const [activeTab, setActiveTab] = useState("profile");
 
   // Profile fields
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
   const [formObj, setFormObj] = useState({
     name:"",
-    email:""
+    email:"",
+    id:""
   })
   const [profilePic, setProfilePic] = useState('')
 
@@ -29,8 +29,11 @@ function SettingsPage() {
   useEffect(() => {
     if (users && users.length > 0) {
       const user = users[0]; // using first user for demo
-      setName(user.name || '');
-      setEmail(user.email || '');
+      setFormObj({
+        name:user.name||"",
+        email:user.email||"",
+        id:user.id||""
+      })
       setProfilePic(user.avatar)
       setUsername(user.username || '');
       setPassword(user.password || '');
@@ -69,7 +72,7 @@ function SettingsPage() {
   function handleChange(e){
     const {name, value} = e.target
     setFormObj(prev=>({...prev, [name]:value}))
-    console.log(formObj)
+    // console.log(formObj)
   }
 
   return (
@@ -97,14 +100,17 @@ function SettingsPage() {
             <h3>Profile Section</h3>
             <img className="avatar" src={profilePic} alt='profile image'/>
 
-            <form className='profile-form'>
+            <form onSubmit={(e)=>onProfileEdit(e, formObj)} className='profile-form'>
               <label>Name</label>
               <input name='name' value={formObj.name} onChange={handleChange} placeholder="Enter your name" />
 
               <label>Email</label>
               <input name='email' value={formObj.email} onChange={handleChange} placeholder="Enter your email" />
 
-              <button className="save-btn" onClick={saveProfile}>Save Profile</button>
+              <button className={!sending?'save-btn':"saving"}>{!sending?'Save Changes'
+                  :
+                  <LoadingCircle/>
+              }</button>
             </form>
           </div>
         )}
