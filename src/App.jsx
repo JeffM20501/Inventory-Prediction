@@ -13,7 +13,8 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
-  const APIBaseurl = import.meta.env.VITE_API_BASE_URL
+  // If env variable is missing, default to localhost:8000
+const APIBaseurl = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000"
 
   console.log(APIBaseurl)
   console.log(import.meta.env)
