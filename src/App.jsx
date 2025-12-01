@@ -44,7 +44,7 @@ const APIBaseurl = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000"
       handlefetch('products', setProducts)
     ])
       .then(()=>{setLoading(true)})
-      .catch(()=>{setLoading(true)})
+      .catch(()=>{setLoading(true)}) // show page even when it has error
 
   }, [APIBaseurl])
 

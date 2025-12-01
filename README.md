@@ -233,7 +233,7 @@
 ### Port Information
 
 - **Development Server**: `http://localhost:5173` (Vite)
-- **JSON API Server**: `http://localhost:4000` (JSON Server)
+- **JSON API Server**: `http://localhost:4000` (JSON Server) or any other port you local machine is using to host the server
 
 ## Deployment
 

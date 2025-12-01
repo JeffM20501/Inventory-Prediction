@@ -60,10 +60,6 @@ function SettingsPage() {
     else document.body.classList.remove("darkmode");
   };
 
-  const saveProfile = () => {
-    alert("Profile saved!");
-  };
-
   const saveSecurity = () => {
     alert("Security saved!");
   };
