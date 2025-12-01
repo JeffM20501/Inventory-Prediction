@@ -4,12 +4,17 @@
     margin: 0 auto;
 }
 
+.fetch-error h2{
+    letter-spacing: 3px;
+    font-size: 1.5rem;
+}
+
 .fetch-error h2, p {
     margin-top: 15px;
 }
 
 .fetch-error img{
-    max-inline-size: 400px;
+    max-inline-size: 500px;
     margin: 0 auto;
     border-radius: 10px;
 }
